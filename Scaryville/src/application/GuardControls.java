@@ -47,6 +47,23 @@ public class GuardControls {
 
         }
     }
+    
+    private void movesLeft() {
+    	int newColumn = column - 1;
+    	if(validMove(row, newColumn) == true) {
+    		maze.getMyArray()[column][row].setEmptySpace(' ');
+            column = newColumn;
+        	maze.getMyArray()[column][row].setEmptySpace('S');
+    	}
+    }
+    private void movesRight() {
+    	int newColumn = column + 1;
+    	if(validMove(row, newColumn) == true) {
+    		maze.getMyArray()[column][row].setEmptySpace(' ');
+            column = newColumn;
+        	maze.getMyArray()[column][row].setEmptySpace('S');
+    	}
+    }
     public void handleKeyPresss(KeyEvent event) {
         
         if(event.getCode() == KeyCode.W) {
@@ -61,6 +78,17 @@ public class GuardControls {
         	movesDown();
         	updatedMazeWGaurd();
         }
+        if(event.getCode() == KeyCode.A) {
+        	System.out.println("A was pressed!");
+        	movesLeft();
+        	updatedMazeWGaurd();
+        }
+        if(event.getCode() == KeyCode.D) {
+        	System.out.println("D was pressed!");
+        	movesRight();
+        	updatedMazeWGaurd();
+        }
+        
     }
     public void updatedMazeWGaurd() {
     	maze.printMaze();
