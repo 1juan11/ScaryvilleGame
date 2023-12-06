@@ -1,6 +1,5 @@
-/* styles.css */
 .border-pane {
-    -fx-background-color: black; /* Set the desired background color for the BorderPane */
+    -fx-background-color: black;
 }
 .start-label {
     -fx-text-fill: red;
@@ -8,8 +7,6 @@
     -fx-effect: dropshadow(three-pass-box, red, 5, 0.5, 1, 1);
     
 }
-
-
 
 .end-label {
     -fx-text-fill: #c2bf11;
@@ -26,18 +23,17 @@
 .default-label {
     -fx-border-color: #0f0b0b;
 }
-/* application.css */
 
 .button-styled{
     -fx-background-color: black;
     -fx-text-fill: darkred;
-    -fx-font-size: 12pt; /* Adjust the font size as needed */
-    -fx-padding: 10 20; /* Adjust padding (top/bottom, right/left) */
+    -fx-font-size: 12pt; 
+    -fx-padding: 10 20;
     -fx-effect: dropshadow(three-pass-box, darkred, 10, 0, 0, 0);
 }
 
 .button-styled:hover {
-    -fx-background-color: black; /* Change the background color when the button is hovered */
+    -fx-background-color: black;
     -fx-text-fill: red;
     -fx-font-size: 12pt;
     -fx-padding: 10 20;
