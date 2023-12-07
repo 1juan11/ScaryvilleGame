@@ -11,54 +11,51 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    @Override
-    public void start(Stage primaryStage) {
-        AsylumMap asylumMap = new AsylumMap(20, 20);
-        MapPane mapPane = new MapPane(asylumMap);
-        GuardControls guardControls = new GuardControls(asylumMap, mapPane);
-        
+	@Override
+	public void start(Stage primaryStage) {
+		AsylumMap asylumMap = new AsylumMap(20, 20);
+		MapPane mapPane = new MapPane(asylumMap);
+		GuardControls guardControls = new GuardControls(asylumMap, mapPane);
 
+		VBox vbox = new VBox(mapPane, createResetButton(asylumMap, mapPane, guardControls));
+		vbox.setSpacing(15);
+		vbox.setAlignment(Pos.CENTER);
 
-        VBox vbox = new VBox(mapPane, createResetButton(asylumMap, mapPane, guardControls));
-        vbox.setSpacing(15);
-        vbox.setAlignment(Pos.CENTER);
+		BorderPane root = new BorderPane();
+		root.getStyleClass().add("border-pane");
+		root.setCenter(vbox);
+		mapPane.updateMaze();
+		Scene scene = new Scene(root, 640, 800);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-        BorderPane root = new BorderPane();
-        root.getStyleClass().add("border-pane");
-        root.setCenter(vbox);
-        mapPane.updateMaze();
-        Scene scene = new Scene(root, 640, 800);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        
-        scene.setOnKeyPressed(guardControls::handleKeyPresss);
+		scene.setOnKeyPressed(guardControls::handleKeyPresss);
 
+		primaryStage.setTitle("Scaryville");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 
-        primaryStage.setTitle("Scaryville");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+	private Button createResetButton(AsylumMap asylumMap, MapPane mapPane, GuardControls guardControls) {
+		Button resetButton = new Button("Reset");
+		resetButton.getStyleClass().add("button-styled");
 
-    private Button createResetButton(AsylumMap asylumMap, MapPane mapPane,GuardControls guardControls) {
-        Button resetButton = new Button("Reset");
-        resetButton.getStyleClass().add("button-styled");
+		resetButton.setOnMouseEntered(event -> {
+			resetButton.getStyleClass().addAll("button-styled", "hover-styled");
+		});
 
-        resetButton.setOnMouseEntered(event -> {
-            resetButton.getStyleClass().addAll("button-styled", "hover-styled");
-        });
+		resetButton.setOnMouseExited(event -> {
+			resetButton.setStyle("");
+		});
 
-        resetButton.setOnMouseExited(event -> {
-            resetButton.setStyle("");
-        });
+		resetButton.setOnAction(event -> {
+			asylumMap.generateMaze(new Random());
+			mapPane.updateMaze();
+			guardControls.resetGaurd();
+		});
+		return resetButton;
+	}
 
-        resetButton.setOnAction(event -> {
-            asylumMap.generateMaze(new Random());
-            mapPane.updateMaze();
-            guardControls.resetGaurd();
-        });
-        return resetButton;
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
