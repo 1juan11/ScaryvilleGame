@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Random;
+
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -37,7 +39,10 @@ public class GuardControls {
 	}
 
 	public boolean validMove(int newRow, int newColumn) {
-		return maze.getCell(newColumn, newRow) != 'W';
+		return maze.getCell(newColumn, newRow) != 'W' && maze.getCell(newColumn, newRow) != 'L';
+	}
+	public boolean guardCuaght(int newRow, int newColumn) {
+		return maze.getCell(newColumn, newRow) == 'L';
 	}
 
 	private void movesUp() {
@@ -102,13 +107,21 @@ public class GuardControls {
 			System.out.println("D was pressed!");
 			movesRight();
 			updatedMazeWGaurd();
-		}
+		} else if (event.getCode() == KeyCode.F10) {
+            maze.generateMaze(new Random());
+            mapPane.updateMaze();
+            resetGaurd();
+        }
+		if(maze.getCell(18, 18) == 'S') {
+        	mapPane.updateMaze();
+        }
 		mapPane.updateMaze();
 
 	}
 
 	public void updatedMazeWGaurd() {
 		maze.printMaze();
+		//mapPane.cuaghtMessage();
 	}
 
 }

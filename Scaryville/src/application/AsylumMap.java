@@ -37,6 +37,8 @@ public class AsylumMap {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
 				Coordinate currentCoordinate = asylumMaze[j][i];
+				
+				int randomNum = random.nextInt(4);
 
 				if (i == 1 && j == 1) {
 					System.out.print("S ");
@@ -44,15 +46,21 @@ public class AsylumMap {
 				} else if (i == rows - 1 && j == columns - 2) {
 					System.out.print("E ");
 					currentCoordinate.setEmptySpace('E');
-				} else if (i == 0 || i == rows - 1 || j == 0 || j == columns - 1 || random.nextInt(4) == 0) {
+				} else if(i == 17 && j == 18 || i == 16 && j == 17){
+					System.out.print("L ");
+					currentCoordinate.setEmptySpace('L');
+					
+				}else if (i == 0 || i == rows - 1 || j == 0 || j == columns - 1 || randomNum == 0) {
 					System.out.print("W ");
 					currentCoordinate.setEmptySpace('W');
-				} else {
+					
+				}else {
 					currentCoordinate.setEmptySpace(' ');
 					System.out.print("  ");
 				}
 			}
 			System.out.println("");
+			
 		}
 		System.out.println("\n\nPrints matrix\n");
 		printMaze();
@@ -70,6 +78,7 @@ public class AsylumMap {
 			}
 			System.out.println("");
 		}
+
 	}
 
 }

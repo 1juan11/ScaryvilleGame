@@ -1,5 +1,6 @@
 package application;
 
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -12,7 +13,7 @@ public class MapPane extends BorderPane {
 	public MapPane(AsylumMap maze) {
 		this.maze = maze;
 
-		generateBoard();
+		generateBoard();		
 	}
 
 	public void updateMaze() {
@@ -20,6 +21,7 @@ public class MapPane extends BorderPane {
 		generateBoard();
 
 	}
+	
 
 	public void generateBoard() {
 		GridPane gridPane = new GridPane();
@@ -45,10 +47,13 @@ public class MapPane extends BorderPane {
 				if (cellChar == ' ') {
 					label.getStyleClass().add("default-label");
 				}
-
+				if(cellChar == 'L') {
+					label.getStyleClass().add("lunatic-label");
+				}
 				gridPane.add(label, i, j);
 			}
 		}
+
 
 		setCenter(gridPane);
 	}

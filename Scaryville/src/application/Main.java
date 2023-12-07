@@ -18,13 +18,15 @@ public class Main extends Application {
 		AsylumMap asylumMap = new AsylumMap(20, 20);
 		MapPane mapPane = new MapPane(asylumMap);
 		GuardControls guardControls = new GuardControls(asylumMap, mapPane);
+		Lunatic lunatic = new Lunatic(mapPane,guardControls);
 
 		BorderPane gui = new BorderPane();
 		gui.getStyleClass().add("border-pane");
 		gui.setCenter(mapPane);
 
-		Label instructions = new Label("To move around          \n           W\n "
-				+ "       A S D \n\n");
+		
+		Label instructions = new Label("To move around use       \n \n             W\n "
+				+ "         A S D \n\n");
 		instructions.getStyleClass().add("instr-label");
 
 		Label blank = new Label("                        ");
@@ -33,6 +35,7 @@ public class Main extends Application {
 		HBox bottomContainer = new HBox(instructions,blank, resetButton);
 		bottomContainer.setAlignment(Pos.TOP_CENTER);
 		gui.setBottom(bottomContainer);
+		
 		mapPane.updateMaze();
 		Scene scene = new Scene(gui, 640, 800);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
