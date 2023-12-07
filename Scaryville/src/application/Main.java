@@ -26,7 +26,6 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         root.getStyleClass().add("border-pane");
         root.setCenter(vbox);
-
         mapPane.updateMaze();
         Scene scene = new Scene(root, 640, 800);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

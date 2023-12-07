@@ -75,14 +75,11 @@ public class GuardControls {
         	System.out.println("W was pressed!");
         	movesUp();
         	updatedMazeWGaurd();
-
         }
         if(event.getCode() == KeyCode.S) {
         	System.out.println("S was pressed!");
         	movesDown();
         	updatedMazeWGaurd();
-
-
         }
         if(event.getCode() == KeyCode.A) {
         	System.out.println("A was pressed!");
