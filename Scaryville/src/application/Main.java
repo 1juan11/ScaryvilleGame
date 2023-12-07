@@ -14,12 +14,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         AsylumMap asylumMap = new AsylumMap(20, 20);
-        GuardControls guardControls = new GuardControls(asylumMap);
+        MapPane mapPane = new MapPane(asylumMap);
+        GuardControls guardControls = new GuardControls(asylumMap, mapPane);
         
-        MapPane mapPane = new MapPane(asylumMap, guardControls);
 
 
-        VBox vbox = new VBox(mapPane, createResetButton(asylumMap, mapPane,guardControls));
+        VBox vbox = new VBox(mapPane, createResetButton(asylumMap, mapPane, guardControls));
         vbox.setSpacing(15);
         vbox.setAlignment(Pos.CENTER);
 

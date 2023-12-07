@@ -8,9 +8,11 @@ public class GuardControls {
     private int row;
     private int column;
     private MapPane mapPane;
+ 
 
-    public GuardControls(AsylumMap maze) {
+    public GuardControls(AsylumMap maze, MapPane mapPane) {
         this.maze = maze;
+        this.mapPane = mapPane;
         this.row = 1;
         this.column = 1;
         
@@ -34,6 +36,7 @@ public class GuardControls {
             maze.getMyArray()[column][row].setEmptySpace(' ');
             row = newRow;
             maze.getMyArray()[column][row].setEmptySpace('S');
+
         }
     }
 
@@ -54,6 +57,7 @@ public class GuardControls {
     		maze.getMyArray()[column][row].setEmptySpace(' ');
             column = newColumn;
         	maze.getMyArray()[column][row].setEmptySpace('S');
+
     	}
     }
     private void movesRight() {
@@ -62,6 +66,7 @@ public class GuardControls {
     		maze.getMyArray()[column][row].setEmptySpace(' ');
             column = newColumn;
         	maze.getMyArray()[column][row].setEmptySpace('S');
+
     	}
     }
     public void handleKeyPresss(KeyEvent event) {
@@ -70,26 +75,30 @@ public class GuardControls {
         	System.out.println("W was pressed!");
         	movesUp();
         	updatedMazeWGaurd();
-        	
-        	
+
         }
         if(event.getCode() == KeyCode.S) {
         	System.out.println("S was pressed!");
         	movesDown();
         	updatedMazeWGaurd();
+
+
         }
         if(event.getCode() == KeyCode.A) {
         	System.out.println("A was pressed!");
         	movesLeft();
         	updatedMazeWGaurd();
+
         }
         if(event.getCode() == KeyCode.D) {
         	System.out.println("D was pressed!");
         	movesRight();
         	updatedMazeWGaurd();
         }
+        mapPane.updateMaze();
         
     }
+
     public void updatedMazeWGaurd() {
     	maze.printMaze();
     }
@@ -102,12 +111,4 @@ public class GuardControls {
         return column;
     }
 
-    public void validMoveToString(int newRow, int newColumn) {
-        if (validMove(newRow, newColumn) == true) {
-            System.out.println("Guard made a valid move.");
-            mapPane.updateMaze();
-        } else {
-            System.out.println("Invalid Move!");
-        }
-    }
 }

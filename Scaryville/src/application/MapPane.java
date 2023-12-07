@@ -8,18 +8,17 @@ import javafx.scene.layout.GridPane;
 public class MapPane extends BorderPane {
 
     private AsylumMap maze;
-    private GuardControls guardControls;
 
-    public MapPane(AsylumMap maze, GuardControls guardControls) {
+    public MapPane(AsylumMap maze) {
         this.maze = maze;
-        this.guardControls = guardControls;
 
         generateBoard();
     }
 
     public void updateMaze() {
-        ((GridPane) getCenter()).getChildren().clear();
+         ((GridPane) getCenter()).getChildren().clear();
         generateBoard();
+
     }
 
     public void generateBoard() {
@@ -53,4 +52,6 @@ public class MapPane extends BorderPane {
 
         setCenter(gridPane);
     }
+    
+ 
 }

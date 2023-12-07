@@ -20,6 +20,7 @@ public class AsylumMap {
         }
         generateMaze(new Random());
     }
+    
 
     public int getRows() {
         return rows;
