@@ -24,7 +24,7 @@ public class MapPane extends BorderPane {
 	public void generateBoard() {
 		GridPane gridPane = new GridPane();
 		gridPane.setAlignment(Pos.CENTER);
-
+		
 		for (int i = 0; i < maze.getRows(); i++) {
 			for (int j = 0; j < maze.getColumns(); j++) {
 				char cellChar = maze.getCell(i, j);
@@ -34,7 +34,7 @@ public class MapPane extends BorderPane {
 				label.setMinSize(32, 32);
 				label.setStyle("-fx-border-width: 0.4;");
 				if (cellChar == 'S') {
-					label.getStyleClass().add("start-label");
+					label.getStyleClass().add("guard-label");
 				}
 				if (cellChar == 'E') {
 					label.getStyleClass().add("end-label");

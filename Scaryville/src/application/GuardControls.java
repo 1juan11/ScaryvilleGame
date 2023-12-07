@@ -18,6 +18,7 @@ public class GuardControls {
 	}
 
 	public int getRow() {
+
 		return row;
 	}
 

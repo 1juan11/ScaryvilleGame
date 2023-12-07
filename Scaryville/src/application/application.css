@@ -1,11 +1,23 @@
 .border-pane {
     -fx-background-color: black;
 }
-.start-label {
-    -fx-text-fill: red;
+.instr-label{
+	-fx-text-fill: black;
+	-fx-font-family: sans-serif;
+	-fx-font-size: 20;
+	-fx-font-weight: bold;
+	-fx-effect: dropshadow(three-pass-box, red, 19.0, 0.5, 1.0, 1.0);
+
+}
+.guard-label {
+    -fx-text-fill: #0f0b0b;
     -fx-background-color: #0f0b0b;
     -fx-effect: dropshadow(three-pass-box, red, 5.0, 0.5, 1.0, 1.0);
-    
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-width: 25px;
+    -fx-max-height: 25px;
+    -fx-background-radius: 12.5;
 }
 
 .end-label {
@@ -38,9 +50,4 @@
     -fx-font-size: 12.0pt;
     -fx-padding: 10.0 20.0;
     -fx-effect: dropshadow(three-pass-box, red, 10.0, 0.0, 0.0, 0.0);
-}
-.guard-label {
-    -fx-text-fill: blue;
-    -fx-background-color: blue;
-    -fx-effect: dropshadow(three-pass-box, white, 80.0, 0.3, 3.0, -10.0);
 }

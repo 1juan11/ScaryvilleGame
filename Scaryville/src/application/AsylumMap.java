@@ -70,7 +70,6 @@ public class AsylumMap {
 			}
 			System.out.println("");
 		}
-		System.out.println("Guard position: (" + rows + ", " + columns + ")");
 	}
 
 }

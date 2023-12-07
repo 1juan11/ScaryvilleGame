@@ -6,26 +6,35 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage){
 		AsylumMap asylumMap = new AsylumMap(20, 20);
 		MapPane mapPane = new MapPane(asylumMap);
 		GuardControls guardControls = new GuardControls(asylumMap, mapPane);
 
-		VBox vbox = new VBox(mapPane, createResetButton(asylumMap, mapPane, guardControls));
-		vbox.setSpacing(15);
-		vbox.setAlignment(Pos.CENTER);
+		BorderPane gui = new BorderPane();
+		gui.getStyleClass().add("border-pane");
+		gui.setCenter(mapPane);
 
-		BorderPane root = new BorderPane();
-		root.getStyleClass().add("border-pane");
-		root.setCenter(vbox);
+		Label instructions = new Label("To move around          \n           W\n "
+				+ "       A S D \n\n");
+		instructions.getStyleClass().add("instr-label");
+
+		Label blank = new Label("                        ");
+		Button resetButton = createResetButton(asylumMap, mapPane, guardControls);
+
+		HBox bottomContainer = new HBox(instructions,blank, resetButton);
+		bottomContainer.setAlignment(Pos.TOP_CENTER);
+		gui.setBottom(bottomContainer);
 		mapPane.updateMaze();
-		Scene scene = new Scene(root, 640, 800);
+		Scene scene = new Scene(gui, 640, 800);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 		scene.setOnKeyPressed(guardControls::handleKeyPresss);
