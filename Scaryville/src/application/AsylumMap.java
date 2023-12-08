@@ -46,7 +46,7 @@ public class AsylumMap {
 				} else if (i == rows - 1 && j == columns - 2) {
 					System.out.print("E ");
 					currentCoordinate.setEmptySpace('E');
-				} else if(i == 17 && j == 18 || i == 16 && j == 17){
+				} else if(i == 18 && j == 18){
 					System.out.print("L ");
 					currentCoordinate.setEmptySpace('L');
 					

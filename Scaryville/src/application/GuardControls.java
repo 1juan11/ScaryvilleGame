@@ -41,9 +41,11 @@ public class GuardControls {
 	public boolean validMove(int newRow, int newColumn) {
 		return maze.getCell(newColumn, newRow) != 'W' && maze.getCell(newColumn, newRow) != 'L';
 	}
+	
 	public boolean guardCuaght(int newRow, int newColumn) {
 		return maze.getCell(newColumn, newRow) == 'L';
 	}
+	
 
 	private void movesUp() {
 		int newRow = row - 1;
@@ -57,7 +59,7 @@ public class GuardControls {
 
 	private void movesDown() {
 		int newRow = row + 1;
-		if (validMove(newRow, column) == true) {
+		if (validMove(newRow, column)) {
 			maze.getMyArray()[column][row].setEmptySpace(' ');
 			row = newRow;
 			maze.getMyArray()[column][row].setEmptySpace('S');
@@ -67,7 +69,7 @@ public class GuardControls {
 
 	private void movesLeft() {
 		int newColumn = column - 1;
-		if (validMove(row, newColumn) == true) {
+		if (validMove(row, newColumn)) {
 			maze.getMyArray()[column][row].setEmptySpace(' ');
 			column = newColumn;
 			maze.getMyArray()[column][row].setEmptySpace('S');
@@ -77,7 +79,7 @@ public class GuardControls {
 
 	private void movesRight() {
 		int newColumn = column + 1;
-		if (validMove(row, newColumn) == true) {
+		if (validMove(row, newColumn)) {
 			maze.getMyArray()[column][row].setEmptySpace(' ');
 			column = newColumn;
 			maze.getMyArray()[column][row].setEmptySpace('S');
@@ -121,7 +123,6 @@ public class GuardControls {
 
 	public void updatedMazeWGaurd() {
 		maze.printMaze();
-		//mapPane.cuaghtMessage();
 	}
 
 }

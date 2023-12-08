@@ -18,7 +18,7 @@ public class Main extends Application {
 		AsylumMap asylumMap = new AsylumMap(20, 20);
 		MapPane mapPane = new MapPane(asylumMap);
 		GuardControls guardControls = new GuardControls(asylumMap, mapPane);
-		Lunatic lunatic = new Lunatic(mapPane,guardControls);
+
 
 		BorderPane gui = new BorderPane();
 		gui.getStyleClass().add("border-pane");
