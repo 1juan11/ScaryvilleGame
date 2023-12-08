@@ -38,24 +38,19 @@ public class Lunatic {
 	}
 
 	public void search(Random random) {
-
-			int randomNum = random.nextInt(4);
-			if (randomNum == 1) {
-				movesDown(random);
-				mapPane.updateMaze();
-			}
-			if (randomNum == 2) {
-				movesLeft(random);
-				mapPane.updateMaze();
-			}
-			if(randomNum == 3) {
-				movesRight(random);
-				mapPane.updateMaze();
-			}
-			if(randomNum == 4) {
-				movesUp(random);
-				mapPane.updateMaze();
-			}
+	    while (!guardCuaght()) {  // Terminate the loop if Lunatic is caught
+	        int randomNum = random.nextInt(4);
+	        if (randomNum == 0) {
+	            movesDown(random);
+	        } else if (randomNum == 1) {
+	            movesLeft(random);
+	        } else if (randomNum == 2) {
+	            movesRight(random);
+	        } else if (randomNum == 3) {
+	            movesUp(random);
+	        }
+	        mapPane.updateMaze();
+	    }
 	}
 
 	public void movesUp(Random random) {
