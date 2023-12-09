@@ -41,11 +41,7 @@ public class GuardControls {
 	public boolean validMove(int newRow, int newColumn) {
 		return maze.getCell(newColumn, newRow) != 'W' && maze.getCell(newColumn, newRow) != 'L';
 	}
-	
-	public boolean guardCuaght(int newRow, int newColumn) {
-		return maze.getCell(newColumn, newRow) == 'L';
-	}
-	
+
 
 	private void movesUp() {
 		int newRow = row - 1;

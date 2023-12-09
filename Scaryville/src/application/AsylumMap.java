@@ -38,7 +38,7 @@ public class AsylumMap {
 			for (int j = 0; j < columns; j++) {
 				Coordinate currentCoordinate = asylumMaze[j][i];
 				
-				int randomNum = random.nextInt(4);
+				int randomNum = random.nextInt(5);
 
 				if (i == 1 && j == 1) {
 					System.out.print("S ");
